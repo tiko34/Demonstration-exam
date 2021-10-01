@@ -6,49 +6,135 @@
         xmlns:local="clr-namespace:evg"
         mc:Ignorable="d"
         Title="Приятный шелест"
-        FontFamily="MomotypeCorsira"
+       
         Height="450" 
         Width="800"
         Background="#FFFF">
     <Grid >
         <Grid.RowDefinitions>
             <RowDefinition Height="50"/>
-
-
-            <RowDefinition Height="50"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <ListView x:Name="lst" Grid.Row="1" Margin="10,5,10,-289">
+        <ListView x:Name="lst" Grid.Row="1" HorizontalContentAlignment="Stretch" ScrollViewer.VerticalScrollBarVisibility="Visible" >
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <Grid >
+                    <Border BorderBrush="Gray" CornerRadius="0" BorderThickness="2">
+                    <Grid ShowGridLines="True"  >
+                     
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="250"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="70"/>
+                        </Grid.ColumnDefinitions>
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="50"/>
-                            <RowDefinition Height="50"/>
-
+                            <RowDefinition Height="35"/>
+                            <RowDefinition Height="35"/>
+                            <RowDefinition Height="35"/>
+                            <RowDefinition Height="35"/>
                         </Grid.RowDefinitions>
-                        <TextBlock 
-                              Text="{Binding Title}"
-                            VerticalAlignment="Center"
-                                    TextAlignment="Center"
-                                    Width="390"
-                                    TextWrapping="Wrap"
-                                    HorizontalAlignment="Center"
-                                    Margin="5 5"
-                                    FontSize="26"
-                                    Grid.Row="1"
-                                  > 
+                            <Image
                             
-                        </TextBlock>
-                    </Grid>
+                            Grid.RowSpan="4"
+                            Grid.Column="0"
+                            Width="auto" HorizontalAlignment="Center">
+
+                                <Image.Source>
+                                    <Binding Path="Logo">
+                                        <Binding.TargetNullValue>
+                                            <ImageSource>res/nell.png</ImageSource>
+                                        </Binding.TargetNullValue>
+                                    </Binding>
+                                </Image.Source>
+                            </Image>
+
+                            <TextBlock 
+                               
+                             FontFamily="MomotypeCorsira"
+                            TextAlignment="Left"
+                             VerticalAlignment="Bottom"
+                                    HorizontalAlignment="Left"
+                                    FontSize="16"
+                                    Grid.Row="0"
+                                   Grid.Column="1">
+                                <TextBlock.Style>
+                                    <Style TargetType="TextBlock">
+                                        <Style.Triggers >
+                                            <DataTrigger Binding="{Binding AgentTypeID }"  Value="1"  >
+                                                <Setter Property="TextBlock.Text" Value="OOO"></Setter>
+                                            </DataTrigger>
+                                            <DataTrigger Binding="{Binding AgentTypeID}" Value="2" >
+                                                <Setter Property="TextBlock.Text" Value="OAO"></Setter>
+                                            </DataTrigger>
+                                            <DataTrigger Binding="{Binding AgentTypeID}" Value="3" >
+                                                <Setter Property="TextBlock.Text" Value="ПAO"></Setter>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                        <Style.Resources>
+                                            <DataTemplate x:Key="u">
+                                                <TextBlock>
+                                                    <TextBlock.Text >
+                                                        <MultiBinding StringFormat="{}{0}|{1}">
+                                                            <Binding Path="AgentTypeID"/>
+                                                            <Binding Path="Title"/>
+                                                        </MultiBinding>
+
+                                                    </TextBlock.Text>
+                                                </TextBlock>
+                                            </DataTemplate>
+                                        </Style.Resources>
+                                    </Style>
+                                </TextBlock.Style>
+                             
+
+                            </TextBlock>
+                            <TextBlock 
+                              Text="{Binding ProductSale/ProductCount, StringFormat={}{0} Продаж за год}" 
+                            FontFamily="MomotypeCorsira"
+                                    TextAlignment="Left"                     
+                                  VerticalAlignment="Bottom"
+                                    HorizontalAlignment="Left"                          
+                                    FontSize="16"
+                            Grid.Row="1"
+                                   Grid.Column="1" />
+                            <TextBlock 
+                             FontFamily="MomotypeCorsira"
+                              Text="10%"
+                                    TextAlignment="Right"                            
+                                  VerticalAlignment="Center"
+                                    HorizontalAlignment="Right"               
+                                    FontSize="30"
+                            Grid.Row="1"
+                                   Grid.Column="2" />
+                            <TextBlock 
+                             FontFamily="MomotypeCorsira"
+                              Text="{Binding Phone, StringFormat={}+{0}}"
+                                    TextAlignment="Left"                            
+                                  VerticalAlignment="Center"
+                                    HorizontalAlignment="Left"               
+                                    FontSize="16"
+                            Grid.Row="2"
+                                   Grid.Column="1" />
+                            <TextBlock 
+                             FontFamily="MomotypeCorsira"
+                              Text="{Binding Priority, StringFormat={}Приоритетность: {0}}"
+                                    TextAlignment="Left"                            
+                                  VerticalAlignment="Top"
+                                    HorizontalAlignment="Left"               
+                                    FontSize="16"
+                            Grid.Row="3"
+                                   Grid.Column="1" />
+
+                        </Grid>
+                   </Border>
                 </DataTemplate>
             </ListView.ItemTemplate>
-            
+
         </ListView>
         <Border Grid.Column="0" Background="#C6D7FF">
 
         </Border>
-       
-         
+
+
 
     </Grid>
 </Window>

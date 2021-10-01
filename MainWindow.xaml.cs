@@ -14,9 +14,9 @@ namespace evg
         {
             InitializeComponent();
             lst.ItemsSource = bdagent.GetContext().Agent.ToList();
-            //SqlCommand sc = new SqlCommand(ToString());
-          //  sc.CommandText = "SELECT*FROM AgentTypeID";
-            
+            SqlCommand sc = new SqlCommand(ToString());
+              sc.CommandText = "SELECT*FROM AgentTypeID";
+
         }
     }
 }

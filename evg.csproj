@@ -183,6 +183,7 @@
       <DependentUpon>DB.edmx</DependentUpon>
       <LastGenOutput>DB.cs</LastGenOutput>
     </Content>
+    <Resource Include="res\nell.png" />
     <Resource Include="res\Приятный шелест.ico" />
   </ItemGroup>
   <ItemGroup>
