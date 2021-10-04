@@ -46,7 +46,6 @@
                                     </Binding>
                                 </Image.Source>
                             </Image>
-
                             <TextBlock 
                               
                              FontFamily="MomotypeCorsira"
@@ -102,7 +101,7 @@
                             
                             <TextBlock 
                              FontFamily="MomotypeCorsira"
-                              Text="10%"
+                              Text="{Binding skidka,StringFormat={}{0}%}"
                                     TextAlignment="Right"                            
                                   VerticalAlignment="Center"
                                     HorizontalAlignment="Right"               
@@ -137,8 +136,7 @@
 
         </ListView>
         <Border Grid.Column="0" Background="#C6D7FF">
-            <Label x:Name="lbl" 
-                />
+           
 
         </Border>
 
