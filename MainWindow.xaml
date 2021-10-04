@@ -48,7 +48,7 @@
                             </Image>
 
                             <TextBlock 
-                               
+                              
                              FontFamily="MomotypeCorsira"
                             TextAlignment="Left"
                              VerticalAlignment="Bottom"
@@ -77,7 +77,7 @@
                             </TextBlock>
                             
                             <TextBlock 
-                              Text="{Binding Title}" 
+                              Text="{Binding Title,StringFormat=|{0}}" 
                             FontFamily="MomotypeCorsira"
                                     TextAlignment="Left"                     
                                   VerticalAlignment="Bottom"
@@ -88,7 +88,8 @@
 
 
                             <TextBlock 
-                              Text="{Binding ProductSale/ProductCount, StringFormat={}{0} Продаж за год}" 
+                               Text="{Binding PtdSale, StringFormat={}{0} Продаж за год}"
+                            
                             FontFamily="MomotypeCorsira"
                                     TextAlignment="Left"                     
                                   VerticalAlignment="Bottom"
@@ -136,6 +137,8 @@
 
         </ListView>
         <Border Grid.Column="0" Background="#C6D7FF">
+            <Label x:Name="lbl" 
+                />
 
         </Border>
 
