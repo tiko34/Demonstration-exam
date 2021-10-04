@@ -19,11 +19,11 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <Border BorderBrush="Gray" CornerRadius="0" BorderThickness="2">
-                    <Grid ShowGridLines="True"  >
-                     
-                        <Grid.ColumnDefinitions>
+                        <Grid ShowGridLines="False"  >
+                            <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="250"/>
-                            <ColumnDefinition Width="*"/>
+                             <ColumnDefinition Width="30"/>
+                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="70"/>
                         </Grid.ColumnDefinitions>
                         <Grid.RowDefinitions>
@@ -68,25 +68,25 @@
                                             <DataTrigger Binding="{Binding AgentTypeID}" Value="3" >
                                                 <Setter Property="TextBlock.Text" Value="ПAO"></Setter>
                                             </DataTrigger>
-                                        </Style.Triggers>
-                                        <Style.Resources>
-                                            <DataTemplate x:Key="u">
-                                                <TextBlock>
-                                                    <TextBlock.Text >
-                                                        <MultiBinding StringFormat="{}{0}|{1}">
-                                                            <Binding Path="AgentTypeID"/>
-                                                            <Binding Path="Title"/>
-                                                        </MultiBinding>
 
-                                                    </TextBlock.Text>
-                                                </TextBlock>
-                                            </DataTemplate>
-                                        </Style.Resources>
+                                        </Style.Triggers>
+
+
                                     </Style>
                                 </TextBlock.Style>
-                             
-
                             </TextBlock>
+                            
+                            <TextBlock 
+                              Text="{Binding Title}" 
+                            FontFamily="MomotypeCorsira"
+                                    TextAlignment="Left"                     
+                                  VerticalAlignment="Bottom"
+                                    HorizontalAlignment="Left"                          
+                                    FontSize="16"
+                            Grid.Row="0"
+                                   Grid.Column="2" />
+
+
                             <TextBlock 
                               Text="{Binding ProductSale/ProductCount, StringFormat={}{0} Продаж за год}" 
                             FontFamily="MomotypeCorsira"
@@ -95,7 +95,10 @@
                                     HorizontalAlignment="Left"                          
                                     FontSize="16"
                             Grid.Row="1"
+                                Grid.ColumnSpan="2"
                                    Grid.Column="1" />
+                            
+                            
                             <TextBlock 
                              FontFamily="MomotypeCorsira"
                               Text="10%"
@@ -103,8 +106,8 @@
                                   VerticalAlignment="Center"
                                     HorizontalAlignment="Right"               
                                     FontSize="30"
-                            Grid.Row="1"
-                                   Grid.Column="2" />
+                            Grid.RowSpan="4"
+                                   Grid.Column="3" />
                             <TextBlock 
                              FontFamily="MomotypeCorsira"
                               Text="{Binding Phone, StringFormat={}+{0}}"
@@ -113,6 +116,7 @@
                                     HorizontalAlignment="Left"               
                                     FontSize="16"
                             Grid.Row="2"
+                                Grid.ColumnSpan="2"
                                    Grid.Column="1" />
                             <TextBlock 
                              FontFamily="MomotypeCorsira"
@@ -122,6 +126,7 @@
                                     HorizontalAlignment="Left"               
                                     FontSize="16"
                             Grid.Row="3"
+                                Grid.ColumnSpan="2"
                                    Grid.Column="1" />
 
                         </Grid>
