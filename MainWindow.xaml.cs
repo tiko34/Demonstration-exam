@@ -24,7 +24,10 @@ namespace evg
                 connection.Close();
             }
 
-            foreach (var y in list)
+
+            try
+            {
+ foreach (var y in list)
             {
 
                 SqlCommand sqlcmd = new SqlCommand($"(SELECT SUM(ProductCount) FROM dbo.ProductSale WHERE AgentID = {y.ID})", connection);
@@ -65,6 +68,13 @@ namespace evg
 
 
             }
+            }
+            catch (Exception)
+            {
+
+                MessageBox.Show("отсутствуют записи продаж в бд","Ошибка",MessageBoxButton.OK);
+            }
+           
 
 
 
